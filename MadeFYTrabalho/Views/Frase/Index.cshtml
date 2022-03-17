@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MadeFYTrabalho.Models.Frase>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="CriarFrase">Criar Textos</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DtCadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Texto1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Texto2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diferenca)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtCadastro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Texto1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Texto2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diferenca)
+            </td>
+            <td>
+                <a asp-action="AtualizarFrase" asp-route-id="@item.Id">Editar</a> |
+                
+                <a asp-action="ExluirFrases" asp-route-id="@item.Id">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
