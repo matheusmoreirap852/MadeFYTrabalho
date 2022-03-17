@@ -35,7 +35,6 @@ namespace MadeFYTrabalho.Controllers
 
             if (ModelState.IsValid)
             {
-
                 string retornA = "";
                 string retornB = "";
                 bool colchete = true;

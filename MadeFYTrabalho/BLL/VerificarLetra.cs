@@ -9,7 +9,6 @@
             string retornB = "";
             bool colchete = true;
 
-
             if (letraA != letraB)
             {
                 if (colchete)
