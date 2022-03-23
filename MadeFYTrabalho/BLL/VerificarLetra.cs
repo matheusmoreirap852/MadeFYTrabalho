@@ -1,12 +1,13 @@
-﻿namespace MadeFYTrabalho.BLL
+﻿using System;
+
+namespace MadeFYTrabalho.BLL
 {
     public class VerificarLetra
     {
 
-        public void verifica_Letra(string letraA, string letraB)
+        public void ComparaLetra(string letraA, string letraB, string retornA, string retornB)
         {
-            string retornA = "";
-            string retornB = "";
+            
             bool colchete = true;
 
             if (letraA != letraB)
@@ -19,13 +20,13 @@
                 }
                 else
                 {
-                    retornA = retornA + letraA;
-                    retornB = retornB + letraB;
+                    retornA += letraA;
+                    retornB += letraB;
                 }
                 if (!colchete)
                 {
-                    retornA = retornA + "]" + letraA;
-                    retornB = retornB + "]" + letraB;
+                    retornA += "]" + letraA;
+                    retornB += "]" + letraB;
                     colchete = true;
                 }
                 else
@@ -35,6 +36,7 @@
                     retornB = retornB + letraB;
                 }
             }
+            
         }
     }
 }

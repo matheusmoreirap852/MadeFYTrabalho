@@ -23,6 +23,42 @@ namespace MadeFYTrabalho.Controllers
             return View(await _WebAppDbContext.Frases.ToListAsync());
         }
 
+        string retornA = "";
+        string retornB = "";
+        bool colchete = true;
+
+        public void ComparaLetra(string letraA, string letraB, string retornA, string retornB)
+        {
+            bool colchete = true;
+
+            if (letraA != letraB)
+            {
+                if (colchete)
+                {
+                    retornA += "[" + letraA;
+                    retornB += "[" + letraB;
+                    colchete = false;
+                }
+                else
+                {
+                    retornA += letraA;
+                    retornB += letraB;
+                }
+                if (!colchete)
+                {
+                    retornA += "]" + letraA;
+                    retornB += "]" + letraB;
+                    colchete = true;
+                }
+                else
+                {
+
+                    retornA = retornA + letraA;
+                    retornB = retornB + letraB;
+                }
+            }
+        }
+
         [HttpGet]
         public IActionResult CriarFrase()
         {
@@ -35,14 +71,14 @@ namespace MadeFYTrabalho.Controllers
 
             if (ModelState.IsValid)
             {
-                string retornA = "";
-                string retornB = "";
-                bool colchete = true;
-
+               
                 if (frase.Texto1.Length > frase.Texto2.Length)
                 {
                     for (int i = 0; i < frase.Texto2.Length; i++)
                     {
+                        ComparaLetra(frase.Texto1[i].ToString(), frase.Texto2[i].ToString(), retornA, retornB);
+
+
                         //Validar se letra 1 != letra 2
 
                         if (frase.Texto1[i] != frase.Texto2[i])
@@ -93,10 +129,6 @@ namespace MadeFYTrabalho.Controllers
                 {
                     for (int i = 0; i < frase.Texto1.Length; i++)
                     {
-                        VerificarLetra verificarLetra = new VerificarLetra();
-                        verificarLetra.verifica_Letra("", "");
-                        
-
 
                         //Validar se letra 1 != letra 2
 
