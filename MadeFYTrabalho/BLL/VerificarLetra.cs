@@ -1,42 +1,52 @@
-﻿using System;
+﻿using MadeFYTrabalho.Models;
+using System;
 
 namespace MadeFYTrabalho.BLL
 {
     public class VerificarLetra
     {
-
-        public void ComparaLetra(string letraA, string letraB, string retornA, string retornB)
+        
+        public  RetornoVerificaLetra ComparaLetra(string letraA, string letraB, bool colchete)
         {
-            
-            bool colchete = true;
+           
+            string v1 = "";
+            string v2 = "";
+            RetornoVerificaLetra doisRetornString = new RetornoVerificaLetra();
 
             if (letraA != letraB)
             {
                 if (colchete)
                 {
-                    retornA += "[" + letraA;
-                    retornB += "[" + letraB;
+                    v1 += "[" + letraA;
+                    v2 += "[" + letraB;
                     colchete = false;
                 }
                 else
                 {
-                    retornA += letraA;
-                    retornB += letraB;
+                    v1 += letraA;
+                    v2 += letraB;
                 }
+            }
+            else
+            {
                 if (!colchete)
                 {
-                    retornA += "]" + letraA;
-                    retornB += "]" + letraB;
+                    v1 += "]" + letraA;
+                    v2 += "]" + letraB;
                     colchete = true;
                 }
                 else
                 {
 
-                    retornA = retornA + letraA;
-                    retornB = retornB + letraB;
+                    v1 += letraA;
+                    v2 += letraB;
+
                 }
             }
-            
+            doisRetornString.valor1 = v1;
+            doisRetornString.valor2 = v2;
+            doisRetornString.colchete = colchete;
+            return doisRetornString;
         }
     }
 }
