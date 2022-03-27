@@ -1,3 +1,3 @@
 # MadeFYTrabalho
 
-Projeto feito asp .net 5.0 realiza comparação de duas string, e retorna a diferença separando por colchetes.
+Project made asp .net 5.0 performs comparison of two strings, and returns the difference separated by square brackets.
